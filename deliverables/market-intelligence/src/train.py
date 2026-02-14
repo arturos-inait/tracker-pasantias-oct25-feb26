@@ -2,7 +2,7 @@
 train.py — Train baselines + ML with event-based temporal CV + final holdout.
 
 Improvements over v2:
-  - Final holdout: last N_HOLDOUT events never seen during CV.
+  - Final holdout: last N_HOLDOUT (PRUEBA FINAL) events never seen during CV.
   - Threshold tuning: optimize F1_up on CV, then apply to holdout.
   - Aggregated confusion matrix across CV folds.
   - Primary metric: macro-F1 (handles class imbalance).
@@ -210,12 +210,12 @@ def train_cv(X, y, meta, n_splits=5):
 
 
 # ══════════════════════════════════════════════════════════════════════
-# HOLDOUT EVALUATION
+# HOLDOUT (PRUEBA FINAL) EVALUATION
 # ══════════════════════════════════════════════════════════════════════
 
 def evaluate_holdout(X_cv, y_cv, X_ho, y_ho, meta_ho, avg_thresholds):
     """Train on ALL CV data, evaluate on holdout. Apply tuned thresholds."""
-    print("\n  HOLDOUT EVALUATION")
+    print("\n  HOLDOUT (PRUEBA FINAL) EVALUATION")
     print(f"  Train: {len(X_cv)} rows → Test: {len(X_ho)} rows "
           f"({meta_ho['Eventos'].nunique()} events)\n")
 
@@ -303,29 +303,29 @@ def _write_report(summary, ho_results, lr_imp, rf_imp, X, y, meta,
     n_dn = int((y == 0).sum())
 
     lines = [
-        "# Model Training Report",
-        f"**Generated:** {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M')}",
+        "# Informe de entrenamiento de modelos",
+        f"**Generado:** {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M')}",
         "",
-        "## Target Definition",
+        "## Definición del objetivo",
         "",
-        "- **Target**: `sign(S&P 500 return[t+1])` — next-day direction",
-        "- **Features**: known by end of day *t* (Asia/Europe same-day + US lag t-1)",
-        "- **No same-day leakage**: features at time *t* predict outcome at *t+1*",
+        "- **Objetivo (target)**: `sign(retorno S&P 500[t+1])` — dirección del día siguiente",
+        "- **Features**: conocidas al final del día *t* (Asia/Europa mismo día + EE.UU. con lag t-1)",
+        "- **Sin leakage mismo día**: features en *t* predicen el resultado en *t+1*",
         "",
-        "## Dataset",
+        "## Conjunto de datos",
         "",
         f"- Total samples: {len(X)}  |  Features: {X.shape[1]}  |  Events: {meta['Eventos'].nunique()}",
         f"- Class balance: **up {n_up} ({n_up/len(y):.1%})**  /  down {n_dn} ({n_dn/len(y):.1%})",
         f"- CV: first {meta['Eventos'].nunique() - n_holdout} events  |  "
         f"Holdout: last {n_holdout} events (never seen during CV)",
         "",
-        "## Primary Metric: macro-F1",
+        "## Métrica principal: F1 macro",
         "",
         "Accuracy is misleading with 65/35 imbalance (majority baseline wins at ~64%). "
         "We use **macro-F1** as the primary metric (equally weights both classes). "
         "Secondary: **F1_up** (ability to catch rebounds) and **AUC** (ranking quality).",
         "",
-        "## Cross-Validation Results (event-based temporal, 5 folds)",
+        "## Resultados de validación cruzada (temporal por eventos, 5 folds)",
         "",
         summary.to_markdown(index=False),
         "",
@@ -417,7 +417,7 @@ def run(config_path="configs/v1.yaml"):
 
     # 1. Load
     print("=" * 60)
-    print("DATA")
+    print("DATOS")
     print("=" * 60)
     df = load_and_clean(
         raw_path=cfg["data"]["raw_path"],
@@ -446,7 +446,7 @@ def run(config_path="configs/v1.yaml"):
 
     # 3. CV training
     print("\n" + "=" * 60)
-    print("CROSS-VALIDATION")
+    print("VALIDACIÓN CRUZADA")
     print("=" * 60)
     n_splits = int(cfg["model"].get("n_cv_folds", 5))
     cv_results, cm_agg, avg_thresholds, pr_curves = train_cv(X_cv, y_cv, meta_cv, n_splits)
@@ -461,7 +461,7 @@ def run(config_path="configs/v1.yaml"):
 
     # 4. Holdout
     print("\n" + "=" * 60)
-    print("HOLDOUT")
+    print("HOLDOUT (PRUEBA FINAL)")
     print("=" * 60)
     ho_results = evaluate_holdout(X_cv, y_cv, X_ho, y_ho, meta_ho, avg_thresholds)
 
@@ -474,7 +474,7 @@ def run(config_path="configs/v1.yaml"):
 
     # 5. Feature importance (on all CV data)
     print("\n" + "=" * 60)
-    print("FEATURE IMPORTANCE")
+    print("IMPORTANCIA DE VARIABLES")
     print("=" * 60)
     lr_imp, rf_imp = feature_importance(X_cv, y_cv)
     print("\nLogistic Regression |coef|:")

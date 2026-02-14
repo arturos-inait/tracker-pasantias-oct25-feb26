@@ -1,6 +1,0 @@
-{
-  "logistic_regression": 0.36563656965735786,
-  "ridge_classifier": 0.4532423364156218,
-  "random_forest": 0.29636914486020494,
-  "gradient_boosting": 0.14410694071706662
-}

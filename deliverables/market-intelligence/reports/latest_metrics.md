@@ -1,23 +1,23 @@
-# Model Training Report
-**Generated:** 2026-02-14 18:32
+# Informe de entrenamiento de modelos
+**Generado:** 2026-02-14 18:32
 
-## Target Definition
+## Definición del objetivo
 
 - **Target**: `sign(S&P 500 return[t+1])` — next-day direction
 - **Features**: known by end of day *t* (Asia/Europe same-day + US lag t-1)
 - **No same-day leakage**: features at time *t* predict outcome at *t+1*
 
-## Dataset
+## Conjunto de datos
 
 - Total samples: 719  |  Features: 23  |  Events: 25
 - Class balance: **up 250 (34.8%)**  /  down 469 (65.2%)
 - CV: first 20 events  |  Holdout: last 5 events (never seen during CV)
 
-## Primary Metric: macro-F1
+## Métrica principal: F1 macro
 
 Accuracy is misleading with 65/35 imbalance (majority baseline wins at ~64%). We use **macro-F1** as the primary metric (equally weights both classes). Secondary: **F1_up** (ability to catch rebounds) and **AUC** (ranking quality).
 
-## Cross-Validation Results (event-based temporal, 5 folds)
+## Resultados de validación cruzada (temporal por eventos, 5 folds)
 
 | model               |   accuracy_mean |   accuracy_std |   f1_macro_mean |   f1_macro_std |   f1_up_mean |   f1_up_std |   balanced_acc_mean |   balanced_acc_std |   n_folds |   auc_mean |     auc_std |
 |:--------------------|----------------:|---------------:|----------------:|---------------:|-------------:|------------:|--------------------:|-------------------:|----------:|-----------:|------------:|
