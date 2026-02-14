@@ -1,0 +1,45 @@
+# Model configuration v1
+# Market Intelligence — WTI volatility event analysis
+
+data:
+  raw_path: data/raw/Eventos-Originales.csv
+  processed_path: data/processed/events_clean.parquet
+  min_event_obs: 10            # min observations per event to be usable
+  min_feature_coverage: 0.30   # drop features below this coverage
+
+  drop_columns:
+    - Dubai-Crude              # 1.8% coverage
+    - Brent-Crude              # 1.8% coverage
+    - stoxx50-volatility       # 10.4% coverage
+    - "Índice de Sentimiento del Consumidor U Michigan"  # 2.5%
+
+features:
+  asia_signals: [nikkei, DEXJPUS]
+  europe_signals: [stoxx50, DEXUSEU, DEXUSUK]
+  commodity_signals: [wti, gold]
+  volatility_signals: [VIX, nikkei_vol]
+  rate_signals: [fed_rate, ecb_rate]
+
+model:
+  target: target_dir_next      # 1=up tomorrow, 0=down tomorrow
+  n_cv_folds: 5
+  n_holdout_events: 5          # last N events reserved for final test
+  random_state: 42
+
+  logistic_regression:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+
+  random_forest:
+    n_estimators: 200
+    max_depth: 5
+    class_weight: balanced
+
+  gradient_boosting:
+    n_estimators: 100
+    max_depth: 3
+    learning_rate: 0.1
+
+reports:
+  output_dir: reports
