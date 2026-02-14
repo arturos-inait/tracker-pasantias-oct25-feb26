@@ -1,5 +1,5 @@
 """
-evaluate.py — Generate all figures for the analysis report.
+evaluate.py — Genera todas las figuras para el reporte de análisis.
 
 Produces in reports/:
   fig_model_comparison.png            bar chart (CV)
@@ -11,7 +11,7 @@ Produces in reports/:
   fig_target_distribution.png         class balance + P(up) by tau
   fig_cross_market_correlation.png    return correlations
 
-Usage:
+Uso:
     python -m src.evaluate --config configs/v1.yaml
 """
 import os, sys, json, warnings, argparse
@@ -44,7 +44,7 @@ def fig_model_comparison(d):
     fig, axes = plt.subplots(1, 3, figsize=(14, 5))
     for ax, met, title in zip(axes,
                                ["accuracy_mean", "f1_macro_mean", "auc_mean"],
-                               ["Accuracy", "F1 macro (primary)", "AUC"]):
+                               ["Exactitud", "F1 macro (principal)", "AUC"]):
         vals = s[met].copy()
         is_nan = vals.isna()
         vals = vals.fillna(0)
@@ -56,7 +56,7 @@ def fig_model_comparison(d):
             label = "n/a" if (met == "auc_mean" and is_nan.iloc[j]) else f"{v:.3f}"
             ax.text(v + 0.02, b.get_y() + b.get_height()/2, label,
                     va="center", fontsize=8)
-    plt.suptitle("Cross-Validation Results (next-day target)", fontweight="bold", y=1.02)
+    plt.suptitle("Resultados de validación cruzada (objetivo día siguiente)", fontweight="bold", y=1.02)
     plt.tight_layout()
     plt.savefig(f"{d}/fig_model_comparison.png", bbox_inches="tight"); plt.close()
     print("  ✓ fig_model_comparison.png")
@@ -68,10 +68,10 @@ def fig_feature_importance(d):
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(12, 5))
     t = lr.head(10).sort_values(lr.columns[0])
     a1.barh(t.index, t.iloc[:, 0], color=C[0])
-    a1.set_title("Logistic Regression |coef|", fontweight="bold")
+    a1.set_title("Regresión logística |coef|", fontweight="bold")
     t = rf.head(10).sort_values(rf.columns[0])
     a2.barh(t.index, t.iloc[:, 0], color=C[1])
-    a2.set_title("Random Forest importance", fontweight="bold")
+    a2.set_title("Importancia — Random Forest", fontweight="bold")
     plt.tight_layout()
     plt.savefig(f"{d}/fig_feature_importance.png", bbox_inches="tight"); plt.close()
     print("  ✓ fig_feature_importance.png")
@@ -96,9 +96,9 @@ def fig_confusion_matrix_cv(d):
                         color="white" if cm[i, j] > cm.max()/2 else "black")
         ax.set_xticks([0, 1]); ax.set_xticklabels(["Down", "Up"])
         ax.set_yticks([0, 1]); ax.set_yticklabels(["Down", "Up"])
-        ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
+        ax.set_xlabel("Predicho"); ax.set_ylabel("Real")
         ax.set_title(name.replace("_", " ").title(), fontsize=9, fontweight="bold")
-    plt.suptitle("Aggregated Confusion Matrices (CV folds summed)", fontweight="bold")
+    plt.suptitle("Matrices de confusión agregadas (suma de folds CV)", fontweight="bold")
     plt.tight_layout()
     plt.savefig(f"{d}/fig_confusion_matrix_cv.png", bbox_inches="tight"); plt.close()
     print("  ✓ fig_confusion_matrix_cv.png")
@@ -123,9 +123,9 @@ def fig_confusion_matrix_holdout(d):
                         color="white" if cm[i, j] > cm.max()/2 else "black")
         ax.set_xticks([0, 1]); ax.set_xticklabels(["Down", "Up"])
         ax.set_yticks([0, 1]); ax.set_yticklabels(["Down", "Up"])
-        ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
+        ax.set_xlabel("Predicho"); ax.set_ylabel("Real")
         ax.set_title(name.replace("_", " ").title(), fontsize=9, fontweight="bold")
-    plt.suptitle("Holdout Confusion Matrices (last 5 events)", fontweight="bold")
+    plt.suptitle("Matrices de confusión (holdout: últimos 5 eventos)", fontweight="bold")
     plt.tight_layout()
     plt.savefig(f"{d}/fig_confusion_matrix_holdout.png", bbox_inches="tight"); plt.close()
     print("  ✓ fig_confusion_matrix_holdout.png")
@@ -141,9 +141,9 @@ def fig_pr_curve(d):
                 label=name.replace("_", " ").title(), linewidth=2)
     # Baseline: prevalence
     # Read from model_summary to get class balance
-    ax.axhline(0.35, color="gray", ls="--", alpha=0.5, label="Prevalence (~35% up)")
-    ax.set_xlabel("Recall (of 'up' class)", fontsize=11)
-    ax.set_ylabel("Precision (of 'up' class)", fontsize=11)
+    ax.axhline(0.35, color="gray", ls="--", alpha=0.5, label="Prevalencia (~35% Up)")
+    ax.set_xlabel("Recall/Cobertura (clase 'Up')", fontsize=11)
+    ax.set_ylabel("Precisión (clase 'Up')", fontsize=11)
     ax.set_title("Precision-Recall Curve — Class 'Up' (next-day S&P positive)",
                  fontweight="bold")
     ax.legend(loc="upper right")
