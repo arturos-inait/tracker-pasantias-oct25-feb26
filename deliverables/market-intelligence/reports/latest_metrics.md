@@ -9,7 +9,7 @@
 
 ## Conjunto de datos
 
-- Total samples: 719  |  Features: 23  |  Events: 25
+- Total samples: 704  |  Features: 23  |  Events: 25
 - Class balance: **up 250 (34.8%)**  /  down 469 (65.2%)
 - CV: first 20 events  |  Holdout: last 5 events (never seen during CV)
 
