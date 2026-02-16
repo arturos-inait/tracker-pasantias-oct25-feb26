@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📊 Tracker de Pasantías
+# Tracker de Pasantías
 
 **Oct 2025 – Feb 2026 · Venezuela & Suiza**
 
@@ -51,7 +51,7 @@ deliverables/market-intelligence/
 ├── data/processed/         # Parquet limpio
 ├── reports/                # 8 figuras + métricas
 │   └── latest_metrics.md   # Reporte completo
-├── CLOSURE.md              # Documentación de cierre
+├── CIERRE.md              # Documentación de cierre
 └── requirements.txt
 ```
 
@@ -75,7 +75,7 @@ Los resultados quedan en `reports/` (tablas, métricas, 8 figuras).
 
 | Documento | Descripción |
 |:----------|:------------|
-| [`CLOSURE.md`](deliverables/market-intelligence/CLOSURE.md) | Narrativa de cierre del proyecto |
+| [`CIERRE.md`](deliverables/market-intelligence/CIERRE.md) | Narrativa de cierre del proyecto |
 | [`latest_metrics.md`](deliverables/market-intelligence/reports/latest_metrics.md) | Reporte técnico completo con tablas y figuras |
 | [**Guía interactiva ↗**](https://arturos-inait.github.io/tracker-pasantias-oct25-feb26/) | Workflow visual paso a paso (sin tecnicismos) |
 
