@@ -9,6 +9,7 @@ Repositorio de seguimiento y entregables asociados a las pasantías.
 ---
 
 [![Guía Interactiva](https://img.shields.io/badge/📖_Guía_Paso_a_Paso-Ver_Online-0d9488?style=for-the-badge&logoColor=white)](https://arturos-inait.github.io/tracker-pasantias-oct25-feb26/)
+
 [![Pipeline](https://img.shields.io/badge/Pipeline-Reproducible-22c55e?style=for-the-badge&logo=python&logoColor=white)](#cómo-reproducir)
 [![Status](https://img.shields.io/badge/Estado-✅_Cerrado-blue?style=for-the-badge)](#)
 
