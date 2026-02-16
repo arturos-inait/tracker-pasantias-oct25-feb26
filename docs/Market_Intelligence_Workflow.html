@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Intelligence - Pasantías 2025-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1e3a5f;
+    --teal: #0d9488;
+    --teal-light: #5eead4;
+    --amber: #f59e0b;
+    --amber-light: #fcd34d;
+    --rose: #f43f5e;
+    --purple: #8b5cf6;
+    --green: #22c55e;
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --surface2: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f1f5f9;
+    --border: #475569;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    position: relative;
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(13,148,136,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(139,92,246,0.1) 0%, transparent 50%);
+    animation: heroGlow 8s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-20px, 10px) scale(1.05); }
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    color: var(--text-bright);
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--teal-light); }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  .hero .badge {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    color: var(--teal-light);
+    position: relative;
+  }
+
+  /* ═══ CONTAINER ═══ */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ═══ PHASE ═══ */
+  .phase {
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .phase-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .phase-title-group { flex: 1; }
+  .phase-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-bright);
+  }
+  .phase-meta {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .phase-who {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══ STEP CARDS ═══ */
+  .steps { display: flex; flex-direction: column; gap: 16px; padding-left: 28px; border-left: 3px solid var(--surface2); }
+  .step {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .step:hover {
+    border-color: var(--border);
+    transform: translateX(4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 32px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--surface2);
+    background: var(--bg);
+    transition: all 0.3s ease;
+  }
+  .step:hover::before { background: var(--teal); border-color: var(--teal); }
+
+  .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .step-icon { font-size: 1.5rem; }
+  .step-title { font-weight: 700; font-size: 1.05rem; color: var(--text-bright); }
+  .step-num {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--bg);
+    padding: 2px 10px;
+    border-radius: 6px;
+  }
+  .step-body { color: var(--text); font-size: 0.95rem; line-height: 1.65; }
+  .step-body strong { color: var(--teal-light); font-weight: 600; }
+
+  /* Detail tags */
+  .detail {
+    display: inline-block;
+    background: rgba(13,148,136,0.12);
+    color: var(--teal-light);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin: 4px 4px 4px 0;
+  }
+  .detail.amber { background: rgba(245,158,11,0.12); color: var(--amber-light); }
+  .detail.purple { background: rgba(139,92,246,0.12); color: #c4b5fd; }
+  .detail.rose { background: rgba(244,63,94,0.12); color: #fda4af; }
+
+  /* ═══ OUTPUT BOX ═══ */
+  .output-box {
+    background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(139,92,246,0.05));
+    border: 1px solid rgba(13,148,136,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 12px;
+  }
+  .output-box .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .output-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  /* ═══ CONNECTOR ═══ */
+  .connector {
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+  }
+  .connector .arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* ═══ ANALOGY ═══ */
+  .analogy {
+    background: rgba(245,158,11,0.08);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 12px 12px 0;
+    padding: 14px 20px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+  .analogy .emoji { margin-right: 6px; }
+
+  /* ═══ SUMMARY CARD ═══ */
+  .summary {
+    background: linear-gradient(135deg, var(--surface), #1a2744);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .summary h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-bright);
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .summary-stat {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .summary-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--teal-light);
+  }
+  .summary-stat .label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* ═══ FLOW DIAGRAM ═══ */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow { color: var(--teal); font-size: 1.2rem; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 640px) {
+    .hero { padding: 50px 20px 40px; }
+    .container { padding: 0 16px 60px; }
+    .steps { padding-left: 20px; }
+    .step { padding: 18px; }
+    .summary { padding: 24px; }
+    .flow { gap: 6px; }
+    .flow-node { min-width: 80px; font-size: 0.78rem; padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <h1>Market Intelligence<br><span>Guía paso a paso (sin tecnicismos)</span></h1>
+  <p class="subtitle">Todo el proceso de la pasantía de Diego + el cierre de Arturo, explicado paso a paso como si fuera la primera vez que lo ves.</p>
+  <div class="badge">📊 Oct 2025 → Feb 2026 · INAIT SA, Lausanne</div>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════ THE BIG PICTURE ═══════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">?</div>
+      <div class="phase-title-group">
+        <div class="phase-title">La Gran Pregunta</div>
+        <div class="phase-meta">Qué queríamos responder</div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #8b5cf6;">
+      <div class="step">
+        <div class="step-body">
+          Cuando el petróleo se mueve mucho en un día (más de 4%), <strong>¿lo que pasa en Tokio y Frankfurt por la mañana nos dice algo sobre lo que pasará en Wall Street por la tarde?</strong>
+          <div class="analogy">
+            <span class="emoji">⛈️</span> <strong>Analogía:</strong> Si ves una tormenta fuerte en Europa a las 8 AM, ¿puedes anticipar si "empeorará" el clima en Nueva York esa tarde? No siempre, pero a veces la tormenta cruza el Atlántico.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA FLOW DIAGRAM -->
+  <div class="flow">
+    <div class="flow-node" style="border-color: var(--amber);">🛢️ Shock WTI<br><small>Petróleo ±4%</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">🇯🇵 Nikkei<br><small>Tokio cierra</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">🇪🇺 STOXX 50<br><small>Europa cierra</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color: var(--teal);">📈 VIX + FX<br><small>"Riesgo" + divisas</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color: var(--rose); background: rgba(244,63,94,0.08);">🇺🇸 S&P 500<br><small>¿Sube o baja mañana?</small></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 1: DIEGO'S DATA COLLECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #f59e0b, #eab308);">1</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Encontrar los Eventos</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(245,158,11,0.15); color: #fcd34d;">👤 Diego</span>
+          Oct – Nov 2025 · Issues #1–#5
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #f59e0b;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🔍</span>
+          <span class="step-title">Identificar shocks del petróleo</span>
+          <span class="step-num">#1</span>
+        </div>
+        <div class="step-body">
+          Revisar el histórico del WTI desde 1986 hasta 2025. Buscar días donde el precio cambió <strong>más de 4% en un solo día</strong>. Cada uno de esos días es un "evento".
+          <div class="analogy">
+            <span class="emoji">💡</span> Como buscar en el historial de terremotos: no quieres los temblorcitos diarios, quieres los que realmente sacudieron todo.
+          </div>
+          <div class="output-box">
+            <div class="label">Resultado</div>
+            <code>50 eventos identificados (1986–2025)</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📅</span>
+          <span class="step-title">Construir ventanas temporales</span>
+          <span class="step-num">#2</span>
+        </div>
+        <div class="step-body">
+          Para cada evento, tomar una <strong>ventana de días</strong> alrededor del shock (antes/durante/después). No nos interesa solo el día del shock — queremos ver qué pasó en los días cercanos.
+          <div class="analogy">
+            <span class="emoji">💡</span> Como ver la repetición de un gol: no solo el instante del gol, sino la jugada completa (antes y después).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 2: DATA COLLECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #f59e0b, #eab308);">2</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Recopilar los Datos</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(245,158,11,0.15); color: #fcd34d;">👤 Diego</span>
+          Nov – Dic 2025 · Issues #6–#10
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #f59e0b;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📥</span>
+          <span class="step-title">Descargar 25 variables financieras</span>
+          <span class="step-num">#6–#8</span>
+        </div>
+        <div class="step-body">
+          Para cada evento, descargar datos diarios de <strong>25 indicadores financieros</strong> desde FRED y Yahoo Finance:
+          <br><br>
+          <span class="detail">S&P 500</span>
+          <span class="detail">WTI</span>
+          <span class="detail">VIX</span>
+          <span class="detail">Nikkei</span>
+          <span class="detail">STOXX 50</span>
+          <span class="detail amber">EUR/USD</span>
+          <span class="detail amber">GBP/USD</span>
+          <span class="detail amber">JPY/USD</span>
+          <span class="detail purple">Fed rate</span>
+          <span class="detail purple">ECB rate</span>
+          <span class="detail">Oro</span>
+          <span class="detail">y más...</span>
+          <div class="analogy">
+            <span class="emoji">💡</span> Como recopilar estadísticas de un partido: no solo el marcador, sino tiros al arco, posesión, tarjetas… todo lo que pueda ser útil.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📊</span>
+          <span class="step-title">Normalizar y organizar</span>
+          <span class="step-num">#9–#10</span>
+        </div>
+        <div class="step-body">
+          Llevar todos los datos a escala comparable usando <strong>normalización min-max</strong> (global y por evento). Organizar en hojas de cálculo con estadísticos descriptivos (media, desviación, percentiles).
+          <div class="output-box">
+            <div class="label">Archivos generados</div>
+            <code>Eventos-Originales.csv · Eventos-Normalizados-Completos.csv · Estadísticos.csv</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📋</span>
+          <span class="step-title">Documentar en GitHub</span>
+          <span class="step-num">#11–#15</span>
+        </div>
+        <div class="step-body">
+          Cada paso se documentó como un <strong>issue de GitHub</strong> (#1 al #15) con progreso, notas y resultados.
+          <div class="output-box">
+            <div class="label">Evaluación parcial (pasantía)</div>
+            <code>83.2 / 100 — "Bueno, pero faltaba el modelado predictivo"</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 3: MASTERCLASS + DIAGNOSIS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #f59e0b, #0d9488);">3</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Clases Magistrales + Diagnóstico</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(245,158,11,0.15); color: #fcd34d;">👤 Diego</span>
+          <span class="phase-who" style="background: rgba(13,148,136,0.15); color: #5eead4; margin-left: 4px;">👤 Arturo</span>
+          Ene – Feb 2026
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #14b8a6;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🎓</span>
+          <span class="step-title">Clases magistrales para Diego</span>
+          <span class="step-num">👤 Diego</span>
+        </div>
+        <div class="step-body">
+          Diego recibió sesiones explicativas sobre el trabajo realizado: <strong>qué significan las métricas</strong> (F1 macro, AUC, accuracy y sus trampas), <strong>cómo funciona la validación cruzada temporal</strong>, la lógica del pipeline y por qué se tomaron ciertas decisiones metodológicas.
+          <br><br>
+          Objetivo: que Diego pueda <strong>explicar y defender el proyecto</strong> ante un jurado o evaluador, comprendiendo no solo los resultados sino el razonamiento detrás de cada paso.
+          <div class="analogy">
+            <span class="emoji">💡</span> No basta con entregar un trabajo — hay que entenderlo lo suficiente para explicar cada decisión en voz alta.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🔬</span>
+          <span class="step-title">Diagnóstico del estado del proyecto</span>
+          <span class="step-num">👤 Arturo</span>
+        </div>
+        <div class="step-body">
+          Revisión de la evaluación parcial, issues de GitHub y cobertura de datos. Identificar qué faltaba para completar el cierre:
+          <br><br>
+          <span class="detail rose">Series con baja cobertura → excluir del modelado</span>
+          <span class="detail amber">Variables con disponibilidad histórica desigual</span>
+          <span class="detail">Modelado predictivo: pendiente de implementar</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📝</span>
+          <span class="step-title">Plan de cierre reproducible</span>
+          <span class="step-num">👤 Arturo</span>
+        </div>
+        <div class="step-body">
+          Diseñar un plan con <strong>código base, criterios de aceptación y reproducibilidad</strong>. Objetivo: completar el componente de modelado y dejar evidencia verificable en el repositorio.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 4: PIPELINE BUILD -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #0d9488, #14b8a6);">4</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Construir el Pipeline de ML</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(13,148,136,0.15); color: #5eead4;">👤 Arturo (cierre)</span>
+          12 Feb 2026 · Implementación del pipeline
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #14b8a6;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🧹</span>
+          <span class="step-title">Paso 4a: Limpieza de datos</span>
+          <span class="step-num">data_loader.py</span>
+        </div>
+        <div class="step-body">
+          Tomar los 3 CSVs → limpiar, validar esquema, reportar faltantes, convertir a formato eficiente (Parquet).
+          <div class="analogy">
+            <span class="emoji">💡</span> Como lavar y pelar las verduras antes de cocinar. Si mezclas ingredientes sucios o incompletos, la receta sale mal.
+          </div>
+          <div class="output-box">
+            <div class="label">Embudo resultante</div>
+            <code>50 eventos → 45 utilizables → 25 con cobertura completa para modelado</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">⚙️</span>
+          <span class="step-title">Paso 4b: Feature Engineering</span>
+          <span class="step-num">features.py</span>
+        </div>
+        <div class="step-body">
+          Transformar los datos crudos en <strong>"pistas" que el modelo puede usar</strong>:
+          <br><br>
+          <span class="detail">Retornos diarios</span>
+          <span class="detail">Lags (valor de ayer)</span>
+          <span class="detail">Diferencias entre mercados</span>
+          <span class="detail rose">Target: signo(S&P[t+1])</span>
+          <br><br>
+          <strong>Regla crítica:</strong> el objetivo es la dirección del S&P 500 del <em>día siguiente</em> (t+1), pero las features solo usan datos disponibles hasta el cierre del día t. Esto evita "mirar el futuro".
+          <div class="output-box">
+            <div class="label">Dataset final (pipeline v3)</div>
+            <code>704 filas × 23 features · Balance: Up 35.5% / Down 64.5%</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" style="border-left: 3px solid var(--rose);">
+        <div class="step-header">
+          <span class="step-icon">🐛</span>
+          <span class="step-title">Paso 4c: Control anti-trampa (leakage)</span>
+        </div>
+        <div class="step-body">
+          En series temporales, un error típico es usar (sin querer) información del "mañana" para predecir "mañana".
+          Eso infla las métricas artificialmente y da una falsa sensación de éxito.
+          <br><br>
+          <strong>Fix aplicado:</strong> la predicción se define estrictamente como <em>t+1</em>, y todas las features se construyen con información disponible hasta el cierre de <em>t</em>.
+          <br><br>
+          <span class="detail" style="background: rgba(34,197,94,0.12); color: #86efac;">Resultados finales realistas: AUC ~0.59 (CV) y ~0.62 (holdout) en el mejor modelo</span>
+          <div class="analogy">
+            <span class="emoji">💡</span> Es como predecir el resultado de un partido <em>antes</em> de que empiece (difícil) vs "predecirlo" mientras lo ves (fácil, pero no vale).
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🤖</span>
+          <span class="step-title">Paso 4d: Entrenar modelos</span>
+          <span class="step-num">train.py</span>
+        </div>
+        <div class="step-body">
+          Entrenar <strong>4 modelos + 2 baselines</strong>, evaluados con validación cruzada temporal por eventos (5 folds):
+          <br><br>
+          <span class="detail purple">Logistic Regression</span>
+          <span class="detail purple">Ridge Classifier</span>
+          <span class="detail purple">Random Forest</span>
+          <span class="detail purple">Gradient Boosting</span>
+          <span class="detail amber">Baseline mayoría</span>
+          <span class="detail amber">Baseline naive</span>
+          <br><br>
+          Los baselines son "controles" mínimos. Si el modelo real no los supera en métricas correctas (F1 macro, AUC), no aporta valor.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📊</span>
+          <span class="step-title">Paso 4e: Evaluar y generar reportes</span>
+          <span class="step-num">evaluate.py</span>
+        </div>
+        <div class="step-body">
+          Generar automáticamente <strong>figuras + tablas</strong>: matrices de confusión, curvas PR, importancia de variables, comparación de modelos.
+          <br><br>
+          <strong>Por qué no usar solo accuracy:</strong> con ~65% de días "Down", un modelo que siempre dice "Down" tiene ~65% de acierto, pero <em>no detecta ninguna subida</em>. Por eso se usa <strong>F1 macro</strong> y <strong>AUC</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 5: HOLDOUT + THRESHOLD -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #0d9488, #14b8a6);">5</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Verificación Final</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(13,148,136,0.15); color: #5eead4;">👤 Arturo (cierre)</span>
+          12 Feb 2026 · Validación final
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #14b8a6;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🔒</span>
+          <span class="step-title">Evaluación en Holdout (el "examen final")</span>
+        </div>
+        <div class="step-body">
+          Los últimos 5 eventos (2019–2025) se reservaron como <strong>holdout</strong>: nunca vistos durante el entrenamiento ni durante la selección de modelos.
+          <br><br>
+          <span class="detail" style="background: rgba(34,197,94,0.12); color: #86efac;">Random Forest (holdout): AUC 0.618 · F1 macro 0.535</span>
+          <div class="analogy">
+            <span class="emoji">💡</span> CV = exámenes de práctica. Holdout = examen final (solo se toma una vez).
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🎚️</span>
+          <span class="step-title">Ajuste de umbral (threshold tuning)</span>
+        </div>
+        <div class="step-body">
+          Los modelos devuelven una <strong>probabilidad</strong> de "Up". Ajustar el umbral permite capturar más subidas (a costa de más falsas alarmas).
+          <br><br>
+          <span class="detail">Ejemplo RF: umbral 0.50 → menos Up predichos</span>
+          <span class="detail" style="background: rgba(34,197,94,0.12); color: #86efac;">Ejemplo RF: umbral ~0.285 → mejor detección de Up</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 6: CLOSURE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-number" style="background: linear-gradient(135deg, #22c55e, #16a34a);">6</div>
+      <div class="phase-title-group">
+        <div class="phase-title">Empaquetar y Cerrar</div>
+        <div class="phase-meta">
+          <span class="phase-who" style="background: rgba(34,197,94,0.12); color: #86efac;">👤 Arturo (cierre)</span>
+          14 Feb 2026 · Integración al repo
+        </div>
+      </div>
+    </div>
+    <div class="steps" style="border-color: #22c55e;">
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📦</span>
+          <span class="step-title">Armar el paquete de entrega</span>
+        </div>
+        <div class="step-body">
+          Organizar todo en una estructura reproducible dentro del repositorio:
+          <div class="output-box">
+            <div class="label">Estructura del entregable</div>
+            <code>
+deliverables/market-intelligence/<br>
+├── src/ (módulos Python)<br>
+├── configs/v1.yaml<br>
+├── data/raw/ (CSVs originales)<br>
+├── data/processed/ (parquet limpio)<br>
+├── reports/ (figuras + métricas)<br>
+├── CLOSURE.md (documentación de cierre)<br>
+└── requirements.txt
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">🔄</span>
+          <span class="step-title">Automatizar con CI/CD</span>
+          <span class="step-num">GitHub Actions</span>
+        </div>
+        <div class="step-body">
+          Crear un workflow que, con cada push, ejecuta el pipeline y publica los reportes como artefacto descargable.
+          <div class="analogy">
+            <span class="emoji">💡</span> Es como tener un "robot de control de calidad" que verifica que todo corre y deja un paquete de resultados listo.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">📝</span>
+          <span class="step-title">Documentación de cierre</span>
+        </div>
+        <div class="step-body">
+          Dejar evidencia clara en español:
+          <br><br>
+          <span class="detail">CLOSURE.md (narrativa de cierre)</span>
+          <span class="detail">ISSUE_16_CLOSE_COMMENT.md</span>
+          <span class="detail">README snippet</span>
+          <span class="detail amber">Resumen Ejecutivo (DOC/PDF)</span>
+          <span class="detail purple">Anexo Técnico + Marco Teórico (DOC/PDF)</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-header">
+          <span class="step-icon">✅</span>
+          <span class="step-title">Verificación final de reproducibilidad</span>
+        </div>
+        <div class="step-body">
+          Prueba final: alguien que nunca vio el proyecto debería poder clonar el repo, correr un comando y obtener los mismos reportes.
+          <div class="output-box">
+            <div class="label">Comando de reproducción</div>
+            <code>python -m src.train --config configs/v1.yaml</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ RESULTS SUMMARY ═══════════ -->
+  <div class="summary">
+    <h2>📊 Resultado Final</h2>
+    <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">
+      Bajo shocks del WTI, el S&P 500 cae al día siguiente ~65% del tiempo (clase mayoritaria).
+      El modelo detecta una señal modesta pero verificable:
+    </p>
+    <div class="summary-grid">
+      <div class="summary-stat">
+        <div class="num">50</div>
+        <div class="label">Eventos identificados<br>(pasantía)</div>
+      </div>
+      <div class="summary-stat">
+        <div class="num">704</div>
+        <div class="label">Observaciones usables<br>(pipeline v3)</div>
+      </div>
+      <div class="summary-stat">
+        <div class="num">0.618</div>
+        <div class="label">AUC holdout<br>(Random Forest)</div>
+      </div>
+      <div class="summary-stat">
+        <div class="num">0.535</div>
+        <div class="label">F1 macro holdout<br>(vs baseline 0.382)</div>
+      </div>
+    </div>
+    <p style="color: var(--text-dim); margin-top: 24px; font-size: 0.9rem;">
+      🏆 <strong style="color: var(--teal-light);">Variables más informativas:</strong>
+      VIX (riesgo), STOXX 50 (Europa), EUR/USD (condiciones financieras globales).
+    </p>
+    <p style="color: var(--text-dim); margin-top: 14px; font-size: 0.85rem;">
+      Nota responsable: esto es un cierre reproducible y una línea base de análisis; no es una estrategia de inversión lista para producción.
+    </p>
+  </div>
+
+  <!-- ═══════════ WHO DID WHAT ═══════════ -->
+  <div style="margin-top: 50px;">
+    <h2 style="font-family: 'Fraunces', serif; font-size: 1.6rem; text-align: center; margin-bottom: 24px; color: var(--text-bright);">¿Quién hizo qué?</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2); border-radius: 16px; padding: 24px;">
+        <h3 style="color: #fcd34d; font-family: 'Fraunces', serif; margin-bottom: 12px;">👤 Diego (Pasantía)</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ 50 eventos identificados (1986–2025)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ 25 variables recopiladas (FRED + Yahoo)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Normalización min-max (global + por evento)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Estadísticos descriptivos</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ 15 issues documentados en GitHub</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Clases magistrales sobre metodología y métricas</li>
+          <li style="padding: 6px 0;">✅ Material de soporte (presentación / documentación)</li>
+        </ul>
+        <div style="margin-top: 12px; color: var(--text-dim); font-size: 0.85rem;">Marco teórico y data → ✅ completado y verificado</div>
+      </div>
+      <div style="background: rgba(13,148,136,0.06); border: 1px solid rgba(13,148,136,0.2); border-radius: 16px; padding: 24px;">
+        <h3 style="color: #5eead4; font-family: 'Fraunces', serif; margin-bottom: 12px;">👤 Arturo (Cierre)</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Diagnóstico + plan de cierre reproducible</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Pipeline ML completo (código modular)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Control anti-leakage (t+1, sin mirar futuro)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ CV temporal + holdout final + tuning de umbral</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Reportes automáticos (figuras + tablas)</li>
+          <li style="padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ GitHub Actions CI/CD</li>
+          <li style="padding: 6px 0;">✅ Documentación formal de cierre</li>
+        </ul>
+        <div style="margin-top: 12px; color: var(--text-dim); font-size: 0.85rem;">Modelado predictivo → ✅ completado y verificado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TIMELINE ═══════════ -->
+  <div style="margin-top: 50px; text-align: center;">
+    <h2 style="font-family: 'Fraunces', serif; font-size: 1.4rem; margin-bottom: 20px; color: var(--text-bright);">Timeline completo</h2>
+    <div class="flow" style="gap: 12px;">
+      <div class="flow-node" style="background: rgba(245,158,11,0.1); border-color: var(--amber);">
+        <small style="color: #fcd34d;">Oct 2025</small><br>Inicio pasantía
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="background: rgba(245,158,11,0.1); border-color: var(--amber);">
+        <small style="color: #fcd34d;">Nov–Dic</small><br>Datos + normalización
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="background: rgba(245,158,11,0.1); border-color: var(--amber);">
+        <small style="color: #fcd34d;">Ene 2026</small><br>Clases magistrales
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="background: rgba(13,148,136,0.1); border-color: var(--teal);">
+        <small style="color: #5eead4;">11–12 Feb</small><br>Pipeline ML + validación
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node" style="background: rgba(34,197,94,0.1); border-color: var(--green);">
+        <small style="color: #86efac;">14 Feb</small><br>✅ Cierre reproducible
+      </div>
+    </div>
+    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 16px;">Entrega de cierre con evidencia en repo + workflow CI/CD.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
